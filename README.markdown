@@ -12,7 +12,7 @@
 
 ## Copyright
 
-Copyright (c) 2018 eshamster (hamgoostar@gmail.com)
+Copyright (c) 2019 eshamster (hamgoostar@gmail.com)
 
 ## License
 
