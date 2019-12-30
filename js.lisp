@@ -44,6 +44,18 @@
   (assert stage)
   (stage.add-child graphics))
 
+;; --- stats --- ;;
+
+(defun.ps init-stats ()
+  (let* ((stats (new (-stats)))
+         (elem stats.dom-element)
+         (style elem.style))
+    (setf style.position "fixed"
+          style.left "5px"
+          style.top "5px")
+    (document.body.append-child elem)
+    (set-global :stats stats)))
+
 ;; --- game loop --- ;;
 
 (defvar.ps+ *global-table* (make-hash-table))
@@ -78,6 +90,7 @@
 
 (defun.ps update (delta)
   (declare (ignorable delta))
+  ((@ (get-global :stats) update))
   (setf (get-global :count) (1+ (get-global :count)))
   (let ((text (get-global :text))
         (app (get-global :app)))
@@ -92,6 +105,7 @@
   (let* ((param (create :width 256 :height 256))
          (app (new (#j.PIXI.Application# param))))
     (document.body.append-child app.view)
+    (init-stats)
     (setf *default-stage* app.stage)
     (setf (gethash :app *global-table*) app)
     (init)
