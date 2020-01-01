@@ -59,7 +59,8 @@
                           (:a :href "https://github.com/eshamster/sample-pixijs-on-cl" "sample-pixijs-on-cl"))
                          (:ul
                           :id "sample-list"
-                          (dolist (name '("simple"))
+                          (dolist (name '("simple"
+                                          "many-objects"))
                             (markup (:li :class "sample-list-element"
                                          (:a :href (format nil "/sample-~A" name)
                                              :target "viewer"
@@ -81,7 +82,8 @@
             (html5 (:head
                     (:title "sample-pixijs-on-cl")
                     (:script :src "https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.2.0/pixi.js" nil)
-                    (:script :src "https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.js" nil))
+                    (:script :src "https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.js" nil)
+                    (:script :src "https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.js" nil))
                    (:body
                     (:script :src (format nil "js/sample-~A.js" name) nil))))))))
 
