@@ -83,7 +83,8 @@
                     (:title "sample-pixijs-on-cl")
                     (:script :src "https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.2.0/pixi.js" nil)
                     (:script :src "https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.js" nil)
-                    (:script :src "https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.js" nil))
+                    (:script :src "https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.js" nil)
+                    (:link :rel "stylesheet" :type "text/css" :href "css/view.css" nil))
                    (:body
                     (:script :src (format nil "js/sample-~A.js" name) nil))))))))
 

@@ -79,8 +79,18 @@
 
 (defun.ps init-app ()
   (let* ((param (create :width *screen-width* :height *screen-height*))
-         (app (new (#j.PIXI.Application# param)))
-         (renderer app.renderer))
+         (app (new (#j.PIXI.Application# param))))
+    ;; TODO: Resize when window is resized.
+    (let* ((style app.renderer.view.style)
+           (scale (min (/ window.inner-width *screen-width*)
+                       (/ window.inner-height *screen-height*)))
+           (width (* *screen-width* scale))
+           (height (* *screen-height* scale)))
+      (setf style.width (+ width "px")
+            style.height (+ height "px")
+            style.position "absolute"
+            style.left (+ (/ (- window.inner-width width) 2) "px")
+            style.top (+ (/ (- window.inner-height height) 2) "px")))
     app))
 
 (defmacro use-this-package-as-sample (&key
