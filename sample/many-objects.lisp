@@ -16,9 +16,9 @@
 
 ;; --- graphics --- ;;
 
-(defun.ps make-solid-circle (&key r color)
+(defun.ps make-solid-circle (&key r color (alpha 1))
   (let ((circle (new (#j.PIXI.Graphics#))))
-    (circle.begin-fill color)
+    (circle.begin-fill color alpha)
     (circle.draw-circle 0 0 r)
     (circle.end-fill)
     circle))
@@ -66,7 +66,9 @@
                    (cdr disable-list))
              head)
            (make-new-circle ()
-             (make-circle :model (make-solid-circle :r *circle-r* :color *circle-color*))))
+             (make-circle :model (make-solid-circle :r *circle-r*
+                                                    :color *circle-color*
+                                                    :alpha 0.4))))
       (let* ((circle (if head
                          (retrieve-disabled-circle)
                          (make-new-circle)))
