@@ -7,7 +7,14 @@
            :set-global
            :get-default-stage
            :get-dat-gui
-           :get-screen-size))
+           :get-screen-size
+           ;; graphics
+           :make-solid-rect
+           :make-wired-rect
+           :make-solid-circle
+           :make-text
+           :add-graphics
+           :remove-graphics))
 (in-package :sample-pixijs-on-cl/sample/utils)
 
 (enable-ps-experiment-syntax)
@@ -72,7 +79,7 @@
 (defun.ps+ get-default-stage ()
   (get-global :stage))
 
-;; --- macro --- ;;
+;; --- initializer --- ;;
 
 (defun.ps init-game-loop (app update-fn)
   (app.ticker.add update-fn))
@@ -110,3 +117,50 @@
                                   (update-common delta)
                                   (funcall ,update-func delta)))))
         stream))))
+
+;; --- graphics --- ;;
+
+(defun.ps make-solid-rect (&key width height color (alpha 1))
+  (let ((rect (new (#j.PIXI.Graphics#))))
+    (rect.begin-fill color alpha)
+    (rect.draw-rect 0 0 width height)
+    (rect.end-fill)
+    rect))
+
+(defun.ps make-wired-rect (&key width height color (line-width 1))
+  (let ((rect (new (#j.PIXI.Graphics#))))
+    (rect.line-style line-width color 1)
+    (rect.draw-rect 0 0 width height)
+    rect))
+
+(defun.ps make-solid-circle (&key r color (alpha 1))
+  (let ((circle (new (#j.PIXI.Graphics#))))
+    (circle.begin-fill color alpha)
+    (circle.draw-circle 0 0 r)
+    (circle.end-fill)
+    circle))
+
+(defun.ps make-text (text &key
+                          (font-family "Arial")
+                          (font-size 32)
+                          (color "black")
+                          (other-opts (make-hash-table)))
+  (let ((opts (make-hash-table)))
+    (dolist (pair (list (list "fontFamily" font-family)
+                        (list "fontSize" font-size)
+                        (list "fill" color)))
+      (setf (gethash (car pair) opts)
+            (cadr pair)))
+    (maphash (lambda (k v)
+               (setf (gethash k opts) v))
+             other-opts)
+    (let ((style (new (#j.PIXI.TextStyle# opts))))
+      (new (#j.PIXI.Text# text style)))))
+
+(defun.ps add-graphics (graphics &optional (stage (get-default-stage)))
+  (assert stage)
+  (stage.add-child graphics))
+
+(defun.ps remove-graphics (graphics &optional (stage (get-default-stage)))
+  (assert stage)
+  (stage.remove-child graphics))

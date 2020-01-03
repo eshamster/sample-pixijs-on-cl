@@ -8,47 +8,15 @@
                 :set-global
                 :get-default-stage
                 :get-dat-gui
-                :get-screen-size))
+                :get-screen-size
+                :make-solid-rect
+                :make-wired-rect
+                :make-text
+                :add-graphics))
 (in-package :sample-pixijs-on-cl/sample/z-index)
 
 (enable-ps-experiment-syntax)
 (use-this-package-as-sample)
-
-;; --- graphics --- ;;
-
-(defun.ps make-solid-rect (&key width height color)
-  (let ((rect (new (#j.PIXI.Graphics#))))
-    (rect.begin-fill color)
-    (rect.draw-rect 0 0 width height)
-    (rect.end-fill)
-    rect))
-
-(defun.ps make-wired-rect (&key width height color (line-width 1))
-  (let ((rect (new (#j.PIXI.Graphics#))))
-    (rect.line-style line-width color 1)
-    (rect.draw-rect 0 0 width height)
-    rect))
-
-(defun.ps make-text (text &key
-                          (font-family "Arial")
-                          (font-size 32)
-                          (color "black")
-                          (other-opts (make-hash-table)))
-  (let ((opts (make-hash-table)))
-    (dolist (pair (list (list "fontFamily" font-family)
-                        (list "fontSize" font-size)
-                        (list "fill" color)))
-      (setf (gethash (car pair) opts)
-            (cadr pair)))
-    (maphash (lambda (k v)
-               (setf (gethash k opts) v))
-             other-opts)
-    (let ((style (new (#j.PIXI.TextStyle# opts))))
-      (new (#j.PIXI.Text# text style)))))
-
-(defun.ps add-graphics (graphics &optional (stage (get-default-stage)))
-  (assert stage)
-  (stage.add-child graphics))
 
 ;; --- params --- ;;
 

@@ -8,28 +8,14 @@
                 :set-global
                 :get-default-stage
                 :get-dat-gui
-                :get-screen-size))
+                :get-screen-size
+                :make-solid-circle
+                :add-graphics
+                :remove-graphics))
 (in-package :sample-pixijs-on-cl/sample/many-objects)
 
 (enable-ps-experiment-syntax)
 (use-this-package-as-sample)
-
-;; --- graphics --- ;;
-
-(defun.ps make-solid-circle (&key r color (alpha 1))
-  (let ((circle (new (#j.PIXI.Graphics#))))
-    (circle.begin-fill color alpha)
-    (circle.draw-circle 0 0 r)
-    (circle.end-fill)
-    circle))
-
-(defun.ps add-graphics (graphics &optional (stage (get-default-stage)))
-  (assert stage)
-  (stage.add-child graphics))
-
-(defun.ps remove-graphics (graphics &optional (stage (get-default-stage)))
-  (assert stage)
-  (stage.remove-child graphics))
 
 ;; --- params --- ;;
 
