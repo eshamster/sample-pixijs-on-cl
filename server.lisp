@@ -60,7 +60,8 @@
                          (:ul
                           :id "sample-list"
                           (dolist (name '("simple"
-                                          "many-objects"))
+                                          "many-objects"
+                                          "z-index"))
                             (markup (:li :class "sample-list-element"
                                          (:a :href (format nil "/sample-~A" name)
                                              :target "viewer"
