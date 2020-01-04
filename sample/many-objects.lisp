@@ -6,7 +6,6 @@
                 :use-this-package-as-sample
                 :get-global
                 :set-global
-                :get-default-stage
                 :get-dat-gui
                 :get-screen-size
                 :make-solid-circle

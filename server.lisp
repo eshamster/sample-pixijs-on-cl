@@ -61,6 +61,7 @@
                           :id "sample-list"
                           (dolist (name '("simple"
                                           "many-objects"
+                                          "text"
                                           "z-index"))
                             (markup (:li :class "sample-list-element"
                                          (:a :href (format nil "/sample-~A" name)

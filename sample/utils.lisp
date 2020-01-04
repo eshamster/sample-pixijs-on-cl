@@ -14,7 +14,8 @@
            :make-solid-circle
            :make-text
            :add-graphics
-           :remove-graphics))
+           :remove-graphics
+           :set-model-xy))
 (in-package :sample-pixijs-on-cl/sample/utils)
 
 (enable-ps-experiment-syntax)
@@ -164,3 +165,7 @@
 (defun.ps remove-graphics (graphics &optional (stage (get-default-stage)))
   (assert stage)
   (stage.remove-child graphics))
+
+(defun.ps set-model-xy (model x y)
+  (setf model.x x
+        model.y y))

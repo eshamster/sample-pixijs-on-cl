@@ -6,7 +6,6 @@
                 :use-this-package-as-sample
                 :get-global
                 :set-global
-                :get-default-stage
                 :make-solid-rect
                 :make-wired-rect
                 :make-text
