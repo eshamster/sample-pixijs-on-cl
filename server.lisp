@@ -62,6 +62,7 @@
                           (dolist (name '("simple"
                                           "many-objects"
                                           "text"
+                                          "texture"
                                           "z-index"))
                             (markup (:li :class "sample-list-element"
                                          (:a :href (format nil "/sample-~A" name)
@@ -102,7 +103,7 @@
          (lack:builder
           (:static :path (lambda (path)
                            (print path)
-                           (if (ppcre:scan "^(?:/images/|/css/|/js/|/robot\\.txt$|/favicon\\.ico$)"
+                           (if (ppcre:scan "^(?:/img/|/css/|/js/|/robot\\.txt$|/favicon\\.ico$)"
                                            path)
                                path
                                nil))

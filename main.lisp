@@ -4,4 +4,5 @@
   (:import-from :sample-pixijs-on-cl/sample/simple)
   (:import-from :sample-pixijs-on-cl/sample/many-objects)
   (:import-from :sample-pixijs-on-cl/sample/text)
+  (:import-from :sample-pixijs-on-cl/sample/texture)
   (:import-from :sample-pixijs-on-cl/sample/z-index))
