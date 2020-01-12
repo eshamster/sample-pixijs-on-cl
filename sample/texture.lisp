@@ -62,8 +62,8 @@
         info))
 
 (defun.ps load-texture (path name)
-  (chain (new (#j.PIXI.Loader#)
-              (add name path))
+  (chain (new (#j.PIXI.Loader#))
+    (add name path)
     (load (lambda ()))))
 
 ;; PIXI.loader.resources['lala'].t﻿exture.baseText﻿ure
@@ -139,4 +139,3 @@
 (defun.ps+ update (delta)
   (declare (ignorable delta))
   (process-sprite-info-manager (get-global :manager)))
-
