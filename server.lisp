@@ -1,7 +1,6 @@
 (defpackage sample-pixijs-on-cl/server
   (:use :cl
-        :cl-markup
-        :sample-pixijs-on-cl/js)
+        :cl-markup)
   (:export :start
            :stop))
 (in-package :sample-pixijs-on-cl/server)
