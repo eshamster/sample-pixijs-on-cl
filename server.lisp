@@ -59,6 +59,7 @@
                          (:ul
                           :id "sample-list"
                           (dolist (name '("simple"
+                                          "container"
                                           "many-objects"
                                           "text"
                                           "texture"
